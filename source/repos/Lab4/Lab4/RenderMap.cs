@@ -52,6 +52,8 @@ namespace Lab4
                 }
             }
         }
+        //test för commit
+
         public void PrintAroundPlayer(GameManager gameManager)
         {
             for (int x = gameManager.Player.Location.row - 2; x < gameManager.Player.Location.row + 3; x++)

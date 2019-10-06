@@ -40,6 +40,8 @@
             CrossAble = false;
             Location = location;
              // KeyColor skall in vid senare tillfälle
+             // eller kanske Keynumber för att ha en nyckel som bara passar till en viss dörr. blir lite underligt när jag skapar gameobjektsen på det sättet jag gör
+             // nytt system för skapandet av dörrar/ nycklar/monster? kanske skriva typ K1,K2,D1,D2 sedan göra nummret till nästa construkt
         }
     }
     abstract class GameObjekt : Entity
