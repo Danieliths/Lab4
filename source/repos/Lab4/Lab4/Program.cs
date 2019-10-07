@@ -15,14 +15,14 @@ namespace Lab4
             Input input = new Input();
             Movement movement = new Movement();
             player.Inventory = new List<GameObjekt>();            
-            void SparaObjektPåRättPlats(string symbols, int collum)
+            void SparaObjektPåRättPlats(string symbols, int collum) // Bryt ut from main så att den inte är nästlad i main
             {
                 char[] b = new char[symbols.Length];
                 for (int i = 0; i < symbols.Length; i++)
                 {
                     using (StringReader sr = new StringReader(symbols))
                     {
-                        sr.Read(b, 0, symbols.Length);
+                        sr.Read(b, 0, symbols.Length); // bättre med switchsats
                         if (b[i] == '#')
                         {
                             map[i, collum] = new Wall(new Point(i, collum));

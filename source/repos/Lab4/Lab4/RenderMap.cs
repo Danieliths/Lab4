@@ -12,7 +12,7 @@ namespace Lab4
             {
                 return;
             }
-            else if (gameManager.Map[x, y].Revealed == true)
+            if (gameManager.Map[x, y].Revealed == true)
             {
                 Console.SetCursorPosition(x, y);
                 if (gameManager.Map[x,y].ConstruktColor != Color.Gray)
@@ -35,9 +35,9 @@ namespace Lab4
         }
         public void UpdateAllPoints(GameManager gameManager)
         {
-            for (int y = 0; y < 17; y++)
+            for (int y = 0; y < 17; y++) // byta ut 17 mot tex mapHight
             {
-                for (int x = 0; x < 100; x++)
+                for (int x = 0; x < 100; x++) // byta ut 100 mot tex mapBredd eller Map.Leanth eller liknande
                 {
                     Console.SetCursorPosition(x, y);
                     if (gameManager.Map[x, y].Revealed == false)
