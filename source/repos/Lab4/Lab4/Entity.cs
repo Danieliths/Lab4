@@ -1,8 +1,7 @@
 ﻿using System;
 
 namespace Lab4
-{
-    
+{ 
     abstract class Entity
     {
         public char Symbol { get; set; }                
@@ -14,7 +13,6 @@ namespace Lab4
         public bool Revealed { get; set; }
         public Color ConstruktColor { get; set; }
         public virtual void ChangeColor(GameManager game, Color color) { }
-
     }
     class Tile : Construkt
     {        
@@ -39,8 +37,7 @@ namespace Lab4
         }
     }
     class Door : Construkt, IinteractAble
-    {
-        
+    {       
         public void Interact(GameManager gameManager, Door door)
         {
             foreach (GameObjekt objekt in gameManager.Player.Inventory)
@@ -101,8 +98,7 @@ namespace Lab4
         public virtual void Interact(GameManager gameManager, GameObjekt objekt) { }
         public virtual void Interact(GameManager gameManager, Door door) { }
         public virtual void ChangeColor(GameManager game, Color color) { }
-        public Color ObjektColor { get; set; }
-        
+        public Color ObjektColor { get; set; }        
     }
     class Key : GameObjekt
     {
@@ -151,11 +147,9 @@ namespace Lab4
     {
         void Interact(GameManager gameManager, GameObjekt objekt);
         void Interact(GameManager gameManager, Door door);
-
     }
     interface IchangeColor
     {
-        void ChangeColor(GameManager game, Color color);
-        
+        void ChangeColor(GameManager game, Color color);        
     }
 }

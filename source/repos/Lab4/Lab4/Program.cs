@@ -4,25 +4,10 @@ using System.IO;
 
 namespace Lab4
 {
-
     class Program
-    {
-        
-        
+    {               
         static void Main(string[] args)
         {
-            // statemaskin som kollar vilken del av spelat vi är i
-            // T.ex. inizilize playgame win
-            // själva gameloopen skall ligga här i
-            // Enum skall finnas här
-
-            //GameState gameState = new GameState();
-            //DataInInitializer init = new DataInInitializer();
-            //RenderMap u = new RenderMap();            
-            //init.InitializLevelOne();
-            //u.UpdateAllPoints();
-            //u.PrintGameBoard();
-            
             List<GameObjekt> gameObjekt = new List<GameObjekt>();
             Player player = new Player();
             Construkt[,] map = new Construkt[100,17];
@@ -108,8 +93,7 @@ namespace Lab4
             GameManager gameManager = new GameManager();
             gameManager.GameObjekt = gameObjekt;
             gameManager.Player = player;
-            gameManager.Map = map;
-            
+            gameManager.Map = map;            
             renderMap.UpdateAllPoints(gameManager);
             renderMap.PrintAroundPlayer(gameManager);
 
@@ -117,15 +101,7 @@ namespace Lab4
             {
                 movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
                 renderMap.PrintAroundPlayer(gameManager);
-            }
-                
-            
-                
-            
-
-            
-
-
+            }                                                                    
         }
     }
 }

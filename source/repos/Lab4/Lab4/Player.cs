@@ -22,14 +22,8 @@ namespace Lab4
                 }               
             }
         }
-        public override void Interact(GameManager gameManager, GameObjekt objekt)
-        {
-
-        }
-        public override void Interact(GameManager gameManager, Door door)
-        {
-
-        }
+        public override void Interact(GameManager gameManager, GameObjekt objekt) { }        
+        public override void Interact(GameManager gameManager, Door door) { }
         public int NumberOfMoves { get; set; }
         public List<GameObjekt> Inventory { get; set; }
         public override void ChangeColor(GameManager gameManager, Color color)
@@ -59,15 +53,12 @@ namespace Lab4
                 default:
                     break;
             }
-
         }
-
         public Player()
         {
             Symbol = '@';            
             NumberOfMoves = 0;
             ObjektColor = Color.Red;
         }        
-
     }
 }

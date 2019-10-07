@@ -4,15 +4,14 @@ using System.Text;
 
 namespace Lab4
 {
-    
-    class Input
+   class Input
     {
         public Direction DirectionInput(GameManager gameManager)
         {
             var direction = Direction.None;
             do
             {               
-                Console.SetCursorPosition(gameManager.Player.Location.row,gameManager.Player.Location.column); // Silvertejp för att lösa att det skrivs ut en inmatad bokstav ner höger om spelare
+                Console.SetCursorPosition(gameManager.Player.Location.row,gameManager.Player.Location.column);
             switch (Console.ReadKey().KeyChar)
             {
                 case 'w':
@@ -28,10 +27,10 @@ namespace Lab4
                     return Direction.Left;
                     
                 default:                    
-                    return Direction.None; // adda eventuellt hjälpmedelande om man trycker fel
+                    return Direction.None;
             }
             } while (direction == Direction.None);
-        }
+        } // adda eventuellt hjälpmedelande om man trycker fel för None
     }
     class Movement
     {
@@ -73,8 +72,7 @@ namespace Lab4
 
                 default:
                     break;
-            }
-            
+            }            
         }
     }
 }
