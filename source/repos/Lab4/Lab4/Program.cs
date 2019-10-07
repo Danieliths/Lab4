@@ -27,6 +27,7 @@ namespace Lab4
             RenderMap renderMap = new RenderMap();
             Input input = new Input();
             Movement movement = new Movement();
+            player.Inventory = new List<GameObjekt>();
 
             void PrintGameObjekt()
             {

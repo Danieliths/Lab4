@@ -30,9 +30,28 @@
             Location = location;
         }
     }
-    class Door : Construkt
+    class Door : Construkt, IinteractAble
     {
         public string KeyColor { get; set; }
+        public void Interact(GameManager gameManager, Door door)
+        {
+            foreach (GameObjekt objekt in gameManager.Player.Inventory)
+            {
+                if (objekt.Symbol == 'K')
+                {
+                    door.CrossAble = true;
+                    door.Symbol = '_';
+                    gameManager.Player.Inventory.Remove(objekt); // skall ändras sedan tror jag, känns konstigt att kasta nycklen om man använt den
+                    break;
+                }
+            }
+            
+            
+        }
+        public void Interact(GameManager gameManager, GameObjekt objekt)
+        {
+            
+        }
         public Door(Point location)
         {
             Symbol = 'D';
@@ -44,17 +63,28 @@
              // nytt system för skapandet av dörrar/ nycklar/monster? kanske skriva typ K1,K2,D1,D2 sedan göra nummret till nästa construkt
         }
     }
-    abstract class GameObjekt : Entity
-    {
-        // gör inget för tillfället men tror att jag kommer ha användning av detta senare
+    abstract class GameObjekt : Entity, IinteractAble
+   {
+        public virtual void Interact(GameManager gameManager, GameObjekt objekt) { }
+        public virtual void Interact(GameManager gameManager, Door door) { }
     }
     class Key : GameObjekt
     {
+        public override void Interact(GameManager gameManager, GameObjekt objekt)
+        {
+            gameManager.Player.Inventory.Add(objekt);
+            gameManager.GameObjekt.Remove(objekt);
+        }      
         public Key(Point location)
         {
             Symbol = 'K';
             Location = location;
         }
     }
+    interface IinteractAble
+    {
+        void Interact(GameManager gameManager, GameObjekt objekt);
+        void Interact(GameManager gameManager, Door door);
 
+    }
 }
