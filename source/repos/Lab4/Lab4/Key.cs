@@ -1,31 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab4
 {
-    class Player : GameObjekt, IInteractAble, IChangeColor
+    class Key : GameObjekt
     {
-        public void CheckInteractAble(GameManager gameManager, int x, int y)
+        public override void Interact(GameManager gameManager, GameObjekt objekt)
         {
-            if (gameManager.Map[x,y] is IInteractAble interactable)
-            {
-                interactable.Interact(gameManager, (Door)interactable);
-            }
-            
-            foreach (var objekt in gameManager.GameObjekt)
-            {
-                if (objekt.Location.row == x && objekt.Location.column == y && objekt is IInteractAble)
-                {
-                    objekt.Interact(gameManager, objekt);
-                    break;
-                }               
-            }
+            gameManager.Player.Inventory.Add(objekt);
+            gameManager.GameObjekt.Remove(objekt);
         }
-        public override void Interact(GameManager gameManager, GameObjekt objekt) { }        
-        public override void Interact(GameManager gameManager, Door door) { }
-        public int NumberOfMoves { get; set; }
-        public List<GameObjekt> Inventory { get; set; }
         public override void ChangeColor(GameManager gameManager, Color color)
         {
             switch (color)
@@ -53,12 +36,13 @@ namespace Lab4
                 default:
                     break;
             }
+            
         }
-        public Player()
+        public Key(Point location, Color color)
         {
-            Symbol = '@';            
-            NumberOfMoves = 0;
-            ObjektColor = Color.Red;
-        }        
+            Symbol = 'K';
+            Location = location;
+            ObjektColor = color;
+        }
     }
 }

@@ -1,31 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab4
 {
-    class Player : GameObjekt, IInteractAble, IChangeColor
-    {
-        public void CheckInteractAble(GameManager gameManager, int x, int y)
+    class Door : Construkt, IInteractAble
+    {       
+        public void Interact(GameManager gameManager, Door door)
         {
-            if (gameManager.Map[x,y] is IInteractAble interactable)
+            foreach (GameObjekt objekt in gameManager.Player.Inventory)
             {
-                interactable.Interact(gameManager, (Door)interactable);
-            }
-            
-            foreach (var objekt in gameManager.GameObjekt)
-            {
-                if (objekt.Location.row == x && objekt.Location.column == y && objekt is IInteractAble)
+                if (objekt.ObjektColor == door.ConstruktColor)
                 {
-                    objekt.Interact(gameManager, objekt);
+                    door.CrossAble = true;
+                    door.Symbol = '_';
+                    gameManager.Player.Inventory.Remove(objekt);
                     break;
-                }               
-            }
+                }
+            }           
         }
-        public override void Interact(GameManager gameManager, GameObjekt objekt) { }        
-        public override void Interact(GameManager gameManager, Door door) { }
-        public int NumberOfMoves { get; set; }
-        public List<GameObjekt> Inventory { get; set; }
         public override void ChangeColor(GameManager gameManager, Color color)
         {
             switch (color)
@@ -53,12 +44,19 @@ namespace Lab4
                 default:
                     break;
             }
+
         }
-        public Player()
+        public void Interact(GameManager gameManager, GameObjekt objekt)
         {
-            Symbol = '@';            
-            NumberOfMoves = 0;
-            ObjektColor = Color.Red;
-        }        
+            
+        }
+        public Door(Point location, Color color)
+        {
+            Symbol = 'D';
+            Revealed = false;
+            CrossAble = false;
+            Location = location;
+            ConstruktColor = color;            
+        }
     }
 }
