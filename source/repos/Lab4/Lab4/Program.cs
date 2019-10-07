@@ -27,26 +27,7 @@ namespace Lab4
             RenderMap renderMap = new RenderMap();
             Input input = new Input();
             Movement movement = new Movement();
-            player.Inventory = new List<GameObjekt>();
-
-            void PrintGameObjekt()
-            {
-                foreach (var item in gameObjekt)
-                {
-                    Console.WriteLine(item.Symbol);
-                }
-            } // TA BORT SEDAN
-            void PrintMap()
-            {
-                for (int y = 0; y < 17; y++)
-                {
-                    for (int x = 0; x < 100; x++)
-                    {                      
-                        Console.Write(map[x, y].Symbol);
-                    }
-                    Console.WriteLine();
-                }
-            } // TA BORT SEDAN
+            player.Inventory = new List<GameObjekt>();            
             void SparaObjektPåRättPlats(string symbols, int collum)
             {
                 char[] b = new char[symbols.Length];
@@ -67,6 +48,11 @@ namespace Lab4
                         {
                             map[i, collum] = new Door(new Point(i, collum));
                         }
+                        else if (b[i] == 'R')
+                        {
+                            map[i, collum] = new Wall(new Point(i, collum));
+                            map[i, collum].Revealed = true;
+                        }
                         if (b[i] == '@')
                         {
                             map[i, collum] = new Tile(new Point(i, collum));
@@ -81,28 +67,28 @@ namespace Lab4
                     }
                 }
             }
-            SparaObjektPåRättPlats("####################################################################################################", 0);
-            SparaObjektPåRättPlats("####################################################################################################", 1);
-            SparaObjektPåRättPlats("##                    ###                       ###                                               ##", 2);
-            SparaObjektPåRättPlats("##            @       ###                       ###                                               ##", 3);
-            SparaObjektPåRättPlats("##                    ###        K               D                                                ##", 4);
-            SparaObjektPåRättPlats("##                    ###                       ###                                               ##", 5);
-            SparaObjektPåRättPlats("##                    ###                       ####################################################", 6);
-            SparaObjektPåRättPlats("##                    ###                       ####################################################", 7);
-            SparaObjektPåRättPlats("##                    ###                       ####################################################", 8);
-            SparaObjektPåRättPlats("##     K              ###                       ###                                               ##", 9);
-            SparaObjektPåRättPlats("##                    ###                        D                                                ##", 10);
-            SparaObjektPåRättPlats("##                    ###                       ###                             K                 ##", 11);
-            SparaObjektPåRättPlats("##                     D                        ###                                               ##", 12);
-            SparaObjektPåRättPlats("##                    ###                       ###                                               ##", 13);
-            SparaObjektPåRättPlats("##                    ###                       ###                                               ##", 14);
-            SparaObjektPåRättPlats("####################################################################################################", 15);
-            SparaObjektPåRättPlats("####################################################################################################", 16);
+            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0);
+            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1);
+            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 2);
+            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 3);
+            SparaObjektPåRättPlats("RR            K       ###        K               D                                                RR", 4);
+            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 5);
+            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 6);
+            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 7);
+            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 8);
+            SparaObjektPåRättPlats("RR       @            ###                       ###                                               RR", 9);
+            SparaObjektPåRättPlats("RR                    ###                        D                                                RR", 10);
+            SparaObjektPåRättPlats("RR                    ###                       ###                             K                 RR", 11);
+            SparaObjektPåRättPlats("RR                     D                        ###                                               RR", 12);
+            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 13);
+            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 14);
+            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15);
+            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16);
             GameManager gameManager = new GameManager();
             gameManager.GameObjekt = gameObjekt;
             gameManager.Player = player;
             gameManager.Map = map;
-            PrintMap();
+            
             renderMap.UpdateAllPoints(gameManager);
             renderMap.PrintAroundPlayer(gameManager);
 
