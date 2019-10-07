@@ -104,16 +104,14 @@ namespace Lab4
             PrintMap();
             renderMap.UpdateAllPoints(gameManager);
             renderMap.PrintAroundPlayer(gameManager);
-            Console.ReadKey();
-            movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
+
+            for (int i = 0; i < 300; i++)
+            {
+                movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
+                renderMap.PrintAroundPlayer(gameManager);
+            }
+                
             
-            renderMap.PrintAroundPlayer(gameManager);
-            Console.ReadKey();
-            movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
-            renderMap.PrintAroundPlayer(gameManager);
-            Console.ReadKey();
-            movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
-            Console.ReadKey();
 
             
 
