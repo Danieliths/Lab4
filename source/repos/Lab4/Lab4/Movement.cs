@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab4
 {
-    enum Direction { Upp,Down,Right,Left, None}
+    
     class Input
     {
         public Direction DirectionInput(GameManager gameManager)

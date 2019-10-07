@@ -23,15 +23,21 @@ namespace Lab4
             else if (gameManager.Map[x, y].Revealed == true)
             {
                 Console.SetCursorPosition(x, y);
-                Console.Write(gameManager.Map[x,y].Symbol);
-                
+                if (gameManager.Map[x,y].ConstruktColor != Color.Gray)
+                {
+                    gameManager.Map[x, y].ChangeColor(gameManager, gameManager.Map[x, y].ConstruktColor);
+                }
+                else
+                {
+                    Console.Write(gameManager.Map[x,y].Symbol);
+                }               
                 foreach (var objekt in gameManager.GameObjekt)
                 {
                     Console.SetCursorPosition(x, y);
                     
                     if (objekt.Location.row == x && objekt.Location.column == y)
                     {
-                        Console.Write(objekt.Symbol);
+                        objekt.ChangeColor(gameManager, objekt.ObjektColor);                       
                     }
                 }
             }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab4
 {
-    class Player : GameObjekt, IinteractAble
+    class Player : GameObjekt, IinteractAble, IchangeColor
     {
         public void CheckInteractAble(GameManager gameManager, int x, int y)
         {
@@ -26,17 +26,47 @@ namespace Lab4
         {
 
         }
-        public void Interact(GameManager gameManager, Door door)
+        public override void Interact(GameManager gameManager, Door door)
         {
 
         }
         public int NumberOfMoves { get; set; }
         public List<GameObjekt> Inventory { get; set; }
+        public override void ChangeColor(GameManager gameManager, Color color)
+        {
+            switch (color)
+            {
+                case Color.Red:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Blue:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Gray:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Yellow:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(Symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                default:
+                    break;
+            }
+
+        }
 
         public Player()
         {
             Symbol = '@';            
             NumberOfMoves = 0;
+            ObjektColor = Color.Red;
         }        
 
     }
