@@ -2,13 +2,14 @@
 
 namespace Lab4
 {
-    class Key : GameObject
+    class Key : GameObject, IInteractAble
     {
-        public override void Interact(GameManager gameManager, GameObject objekt)
+        public void Interact(GameManager gameManager, GameObject objekt)
         {
             gameManager.Player.Inventory.Add(objekt);
             gameManager.GameObject.Remove(objekt);
         }
+        public void Interact(GameManager gameManager, Construkt construkt) { }
         public override void PrintColoredSymbol(GameManager gameManager, Color color)
         {
             switch (color)

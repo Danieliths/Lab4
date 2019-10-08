@@ -10,20 +10,20 @@ namespace Lab4
         {
             if (gameManager.Map[row,column] is IInteractAble interactable)
             {
-                interactable.Interact(gameManager, (Door)interactable);
+                interactable.Interact(gameManager, gameManager.Map[row, column]); 
             }
             
             foreach (var gameObject in gameManager.GameObject)
             {
-                if (gameObject.Location.row == row && gameObject.Location.column == column && gameObject is IInteractAble)
+                if (gameObject.Location.row == row && gameObject.Location.column == column && gameObject is IInteractAble interactAble)
                 {
-                    gameObject.Interact(gameManager, gameObject);
+                    interactAble.Interact(gameManager, gameObject);
                     break;
                 }               
             }
         }
-        public override void Interact(GameManager gameManager, GameObject gameObject) { }        
-        public override void Interact(GameManager gameManager, Door door) { }
+        public void Interact(GameManager gameManager, GameObject gameObject) { }        
+        public void Interact(GameManager gameManager, Construkt construkt) { }
         public int NumberOfMoves { get; set; }
         public List<GameObject> Inventory { get; set; }
         public override void PrintColoredSymbol(GameManager gameManager, Color color)

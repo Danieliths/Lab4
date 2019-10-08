@@ -3,6 +3,6 @@
     interface IInteractAble
     {
         void Interact(GameManager gameManager, GameObject gameObject);
-        void Interact(GameManager gameManager, Door door);
+        void Interact(GameManager gameManager, Construkt construkt);
     }
 }

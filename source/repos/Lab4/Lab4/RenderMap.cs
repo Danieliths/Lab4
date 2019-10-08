@@ -6,27 +6,27 @@ namespace Lab4
 { 
     class RenderMap
     {
-        public void UodatePoint(GameManager gameManager, int x, int y)
+        public void UodatePoint(GameManager gameManager, int row, int column)
         {
-            if (gameManager.Map[x, y].Revealed == false)
+            if (gameManager.Map[row, column].Revealed == false)
             {
                 return;
             }
-            if (gameManager.Map[x, y].Revealed == true)
+            if (gameManager.Map[row, column].Revealed == true)
             {
-                Console.SetCursorPosition(x, y);
-                if (gameManager.Map[x,y].ConstruktColor != Color.Gray)
+                Console.SetCursorPosition(row, column);
+                if (gameManager.Map[row,column].ConstruktColor != Color.Gray)
                 {
-                    gameManager.Map[x, y].PrintColoredSymbol(gameManager, gameManager.Map[x, y].ConstruktColor);
+                    gameManager.Map[row, column].PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor);
                 }
                 else
                 {
-                    Console.Write(gameManager.Map[x,y].Symbol);
+                    Console.Write(gameManager.Map[row,column].Symbol);
                 }               
                 foreach (var objekt in gameManager.GameObject)
                 {
-                    Console.SetCursorPosition(x, y);                    
-                    if (objekt.Location.row == x && objekt.Location.column == y)
+                    Console.SetCursorPosition(row, column);                    
+                    if (objekt.Location.row == row && objekt.Location.column == column)
                     {
                         objekt.PrintColoredSymbol(gameManager, objekt.ObjectColor);                       
                     }
@@ -35,20 +35,20 @@ namespace Lab4
         }
         public void UpdateAllPoints(GameManager gameManager)
         {
-            for (int y = 0; y < 17; y++) // byta ut 17 mot tex mapHight
+            
+            for (int column = 0; column < gameManager.Map.GetLength(1); column++)
             {
-                for (int x = 0; x < 100; x++) // byta ut 100 mot tex mapBredd eller Map.Leanth eller liknande
+                for (int row = 0; row < gameManager.Map.GetLength(0); row++)
                 {
-                    Console.SetCursorPosition(x, y);
-                    if (gameManager.Map[x, y].Revealed == false)
+                    Console.SetCursorPosition(row, column);
+                    if (gameManager.Map[row, column].Revealed == false)
                     {
                         Console.Write("X");
                     }
-                    UodatePoint(gameManager, x, y);
+                    UodatePoint(gameManager, row, column);
                 }
             }
         }
-        
         public void PrintAroundPlayer(GameManager gameManager)
         {
             for (int x = gameManager.Player.Location.row - 2; x < gameManager.Player.Location.row + 3; x++)
