@@ -4,7 +4,7 @@ namespace Lab4
 {
     class Trap : GameObject, IInteractAble
     {                       
-        Trap(Point location)
+        public Trap(Point location)
         {
             Symbol = 'T';            
             Location = location;
@@ -13,7 +13,7 @@ namespace Lab4
 
         public void Event(GameManager gameManager, GameObject gameObject)
         {
-            throw new NotImplementedException();
+            Console.Write("You got stuck in a trap for 50 moves");
         }
 
         public void Event(GameManager gameManager, Construkt construkt)
@@ -25,6 +25,7 @@ namespace Lab4
         {
             gameManager.Player.NumberOfMoves += 50;
             gameManager.EventObject.Add(gameObject);
+            gameManager.GameObject.Remove(gameObject);
         }
         public void Interact(GameManager gameManager, Construkt construkt) { }
         

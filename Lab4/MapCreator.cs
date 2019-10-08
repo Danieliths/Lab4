@@ -59,6 +59,10 @@ namespace Lab4
                             gameManager.Map[row, collum] = new Tile(new Point(row, collum));
                             gameManager.GameObject.Add(new Key(new Point(row, collum), Color.Yellow));
                             break;
+                        case 'T':
+                            gameManager.Map[row, collum] = new Tile(new Point(row, collum));
+                            gameManager.GameObject.Add(new Trap(new Point(row, collum)));
+                            break;
                         default:
                             break;
                     }
@@ -70,18 +74,18 @@ namespace Lab4
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0, gameManager);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 2, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 3, gameManager);
+            CreateMapAndObjectsFromString("RR   T                ###                       ###                                               RR", 3, gameManager);
             CreateMapAndObjectsFromString("RR            a       ###        b               C                                     E          RR", 4, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 5, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 6, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 7, gameManager);
+            CreateMapAndObjectsFromString("RR      T             ###                       ##################################################RR", 6, gameManager);
+            CreateMapAndObjectsFromString("RR              T     ###           T           ##################################################RR", 7, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 8, gameManager);
-            CreateMapAndObjectsFromString("RR       @            ###                       ###                                               RR", 9, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                        B                                                RR", 10, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                             c                 RR", 11, gameManager);
+            CreateMapAndObjectsFromString("RR       @            ###              T        ###                                               RR", 9, gameManager);
+            CreateMapAndObjectsFromString("RR                    ###                        B            T                                   RR", 10, gameManager);
+            CreateMapAndObjectsFromString("RR   T    T T         ###     T                 ###                      T      c                 RR", 11, gameManager);
             CreateMapAndObjectsFromString("RR                     A                        ###                                               RR", 12, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 13, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 14, gameManager);
+            CreateMapAndObjectsFromString("RR                    ### T            T        ###           T                                   RR", 13, gameManager);
+            CreateMapAndObjectsFromString("RR          T         ###                       ###                                     T         RR", 14, gameManager);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15, gameManager);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16, gameManager);           
         }        
