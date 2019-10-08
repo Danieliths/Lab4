@@ -66,7 +66,10 @@ namespace Lab4
                     {
                         Console.Write("X");
                     }
-                    UodatePoint(gameManager, row, column);
+                    else
+                    {
+                        UodatePoint(gameManager, row, column);
+                    }
                 }
             }
         }
