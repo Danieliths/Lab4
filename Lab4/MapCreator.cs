@@ -4,6 +4,8 @@ namespace Lab4
 {
     class MapCreator
     {
+        
+
         public MapCreator() { }        
         public void CreateMapAndObjectsFromString(string symbols, int collum, GameManager gameManager)
         {
@@ -64,6 +66,7 @@ namespace Lab4
         } 
         public void CrateMap(GameManager gameManager)
         {
+            
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0, gameManager);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 2, gameManager);
@@ -82,5 +85,6 @@ namespace Lab4
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15, gameManager);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16, gameManager);           
         }        
+        
     }
 }

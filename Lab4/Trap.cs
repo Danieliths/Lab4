@@ -12,8 +12,8 @@ namespace Lab4
         }
         public void Interact(GameManager gameManager, GameObject gameObject)
         {
-            gameManager.Player.NumberOfMoves += 20;
-        } // skriva ut under kartan
+            gameManager.Player.NumberOfMoves += 50;
+        }
         public void Interact(GameManager gameManager, Construkt construkt)
         {
             throw new NotImplementedException();

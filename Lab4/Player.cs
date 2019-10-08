@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab4
 {
-    class Player : GameObject, IInteractAble
+    class Player : GameObject
     {
         public void CheckInteractAble(GameManager gameManager, int row, int column)
         {
@@ -22,8 +22,6 @@ namespace Lab4
                 }               
             }
         }
-        public void Interact(GameManager gameManager, GameObject gameObject) { }        
-        public void Interact(GameManager gameManager, Construkt construkt) { }
         public int NumberOfMoves { get; set; }
         public List<GameObject> Inventory { get; set; }
         

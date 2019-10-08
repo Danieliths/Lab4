@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab4
 { 
-    class RenderMap
+    class MapRenderer
     {
         public void UodatePoint(GameManager gameManager, int row, int column)
         {
@@ -86,7 +86,8 @@ namespace Lab4
                     gameManager.Map[x, y].Revealed = true;
                     UodatePoint(gameManager, x, y);
                 }
-            }   
+            }
+            Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
         }       
     }
 }

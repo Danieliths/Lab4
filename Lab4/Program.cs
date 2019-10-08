@@ -27,18 +27,17 @@ namespace Lab4
             // sätta up en property i GameManager för gamestate? skapa gameManager innan sedan en switchcase i en whileloop?!?!? 
             //loopar det istället för att loopa vår nuvarande gameplayloop?
             
-            List<GameObject> gameObjekt = new List<GameObject>();
-            Player player = new Player();
-            Construkt[,] map = new Construkt[100,17];
-            RenderMap renderMap = new RenderMap();
+            
+            Player player = new Player();           
+            MapRenderer renderMap = new MapRenderer();
             Input input = new Input();
-            Movement movement = new Movement();
+            MovementController movement = new MovementController();
             MapCreator mapCreator = new MapCreator();
             GameManager gameManager = new GameManager();
             player.Inventory = new List<GameObject>();                        
-            gameManager.GameObject = gameObjekt;
+            gameManager.GameObject = new List<GameObject>();
             gameManager.Player = player;
-            gameManager.Map = map;            
+            gameManager.Map = new Construkt[100, 17];
             mapCreator.CrateMap(gameManager);
             Console.CursorVisible = false;
             renderMap.UpdateAllPoints(gameManager);

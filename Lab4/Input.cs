@@ -9,7 +9,6 @@ namespace Lab4
             var direction = Direction.None;
             do
             {               
-                Console.SetCursorPosition(gameManager.Player.Location.row,gameManager.Player.Location.column);
             switch (Console.ReadKey().KeyChar)
             {
                 case 'w':
@@ -28,6 +27,6 @@ namespace Lab4
                     return Direction.None;
             }
             } while (direction == Direction.None);
-        } // adda eventuellt hjälpmedelande om man trycker fel för None
+        }
     }
 }
