@@ -16,8 +16,7 @@ namespace Lab4
                     break;
                 }
             }           
-        }
-        
+        }       
         public void Interact(GameManager gameManager, GameObject gameObject) { }
         public Door(Point location, Color color)
         {

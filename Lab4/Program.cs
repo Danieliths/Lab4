@@ -30,7 +30,7 @@ namespace Lab4
             
             Player player = new Player();           
             MapRenderer renderMap = new MapRenderer();
-            Input input = new Input();
+            InputManager input = new InputManager();
             MovementController movement = new MovementController();
             MapCreator mapCreator = new MapCreator();
             GameManager gameManager = new GameManager();

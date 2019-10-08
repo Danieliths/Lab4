@@ -15,14 +15,7 @@ namespace Lab4
             if (gameManager.Map[row, column].Revealed == true)
             {
                 Console.SetCursorPosition(row, column);
-                if (gameManager.Map[row,column].ConstruktColor != Color.Gray)
-                {
-                    PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor, gameManager.Map[row, column].Symbol);
-                }
-                else
-                {
-                    Console.Write(gameManager.Map[row,column].Symbol);
-                }               
+                PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor, gameManager.Map[row, column].Symbol);                               
                 foreach (var gameObject in gameManager.GameObject)
                 {
                     Console.SetCursorPosition(row, column);                    

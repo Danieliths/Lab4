@@ -2,7 +2,7 @@
 
 namespace Lab4
 {
-    class Input
+    class InputManager
     {
         public Direction DirectionInput(GameManager gameManager)
         {
