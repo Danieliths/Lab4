@@ -17,20 +17,48 @@ namespace Lab4
                 Console.SetCursorPosition(row, column);
                 if (gameManager.Map[row,column].ConstruktColor != Color.Gray)
                 {
-                    gameManager.Map[row, column].PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor);
+                    PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor, gameManager.Map[row, column].Symbol);
                 }
                 else
                 {
                     Console.Write(gameManager.Map[row,column].Symbol);
                 }               
-                foreach (var objekt in gameManager.GameObject)
+                foreach (var gameObject in gameManager.GameObject)
                 {
                     Console.SetCursorPosition(row, column);                    
-                    if (objekt.Location.row == row && objekt.Location.column == column)
+                    if (gameObject.Location.row == row && gameObject.Location.column == column)
                     {
-                        objekt.PrintColoredSymbol(gameManager, objekt.ObjectColor);                       
+                        PrintColoredSymbol(gameManager, gameObject.ObjectColor, gameObject.Symbol);                       
                     }
                 }
+            }
+        }
+        void PrintColoredSymbol(GameManager gameManager, Color color, char symbol)
+        {
+            switch (color)
+            {
+                case Color.Red:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Blue:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Gray:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write(symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                case Color.Yellow:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                default:
+                    break;
             }
         }
         public void UpdateAllPoints(GameManager gameManager)

@@ -17,35 +17,7 @@ namespace Lab4
                 }
             }           
         }
-        public override void PrintColoredSymbol(GameManager gameManager, Color color)
-        {
-            switch (color)
-            {
-                case Color.Red:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(Symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Blue:
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(Symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Gray:
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(Symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Yellow:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(Symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                default:
-                    break;
-            }
-
-        }
+        
         public void Interact(GameManager gameManager, GameObject gameObject) { }
         public Door(Point location, Color color)
         {
