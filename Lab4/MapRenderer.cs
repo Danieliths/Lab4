@@ -85,5 +85,21 @@ namespace Lab4
             }
             Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
         }       
+        public void PrintInventory(GameManager gameManager)
+        {
+            Console.SetCursorPosition(0, 20);
+            Console.Write("Keys: ");
+            foreach (var gameObject in gameManager.Player.Inventory)
+            {
+                PrintColoredSymbol(gameManager, gameObject.ObjectColor,gameObject.Symbol);
+                Console.Write(" ");
+            }
+            Console.Write(" ");
+        }
+        public void PrintNumberOfMoves(GameManager gameManager)
+        {
+            Console.SetCursorPosition(0, 21);
+            Console.Write("Moves: " + gameManager.Player.NumberOfMoves);
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Lab4
             
             
             Player player = new Player();           
-            MapRenderer renderMap = new MapRenderer();
+            MapRenderer mapRenderer = new MapRenderer();
             InputManager input = new InputManager();
             MovementController movement = new MovementController();
             MapCreator mapCreator = new MapCreator();
@@ -40,14 +40,16 @@ namespace Lab4
             gameManager.Map = new Construkt[100, 17];
             mapCreator.CrateMap(gameManager);
             Console.CursorVisible = false;
-            renderMap.UpdateAllPoints(gameManager);
-            renderMap.PrintAroundPlayer(gameManager);
+            mapRenderer.UpdateAllPoints(gameManager);
+            
             // sätt gamestate till play
 
             while (true) // while gameManager.GameState == Play ?
             {
+                mapRenderer.PrintInventory(gameManager);
+                mapRenderer.PrintNumberOfMoves(gameManager);
+                mapRenderer.PrintAroundPlayer(gameManager);
                 movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
-                renderMap.PrintAroundPlayer(gameManager);
             }  
             // sätta IInteractable på utgången som sätter gamestate till End?
             // kanske en Endscreen som körs och visar upp dina totala moves
