@@ -15,81 +15,80 @@ namespace Lab4
             Input input = new Input();
             Movement movement = new Movement();
             player.Inventory = new List<GameObjekt>();            
-            void SparaObjektPåRättPlats(string symbols, int collum) // Bryt ut from main så att den inte är nästlad i main
+            void CreateMapAndObjectsFromString(string symbols, int collum)
             {
-                char[] b = new char[symbols.Length];
+                char[] charArray = new char[symbols.Length];
                 for (int i = 0; i < symbols.Length; i++)
                 {
                     using (StringReader sr = new StringReader(symbols))
                     {
-                        sr.Read(b, 0, symbols.Length); // bättre med switchsats
-                        if (b[i] == '#')
+                        sr.Read(charArray, 0, symbols.Length);
+                        switch (charArray[i])
                         {
-                            map[i, collum] = new Wall(new Point(i, collum));
+                            case '#':
+                                map[i, collum] = new Wall(new Point(i, collum));
+                                break;
+                            case ' ':
+                                map[i, collum] = new Tile(new Point(i, collum));
+                                break;
+                            case 'R':
+                                map[i, collum] = new Wall(new Point(i, collum));
+                                map[i, collum].Revealed = true;
+                                break;
+                            case 'A':
+                                map[i, collum] = new Door(new Point(i, collum), Color.Red);
+                                break;
+                            case 'B':
+                                map[i, collum] = new Door(new Point(i, collum), Color.Blue);
+                                break;
+                            case 'C':
+                                map[i, collum] = new Door(new Point(i, collum), Color.Yellow);
+                                break;
+                            default:
+                                break;
                         }
-                        else if (b[i] == ' ')
+                        switch (charArray[i])
                         {
-                            map[i, collum] = new Tile(new Point(i, collum));
-                        }                        
-                        else if (b[i] == 'R')
-                        {
-                            map[i, collum] = new Wall(new Point(i, collum));
-                            map[i, collum].Revealed = true;
-                        }
-                        else if (b[i] == 'A')
-                        {
-                            map[i, collum] = new Door(new Point(i, collum), Color.Red);
-                        }
-                        else if (b[i] == 'B')
-                        {
-                            map[i, collum] = new Door(new Point(i, collum), Color.Blue);
-                        }
-                        else if (b[i] == 'C')
-                        {
-                            map[i, collum] = new Door(new Point(i, collum), Color.Yellow);
-                        }
-
-                        if (b[i] == '@')
-                        {
-                            map[i, collum] = new Tile(new Point(i, collum));
-                            player.Location = new Point(i, collum);
-                            gameObjekt.Add(player);
-                        }
-                        if (b[i] == 'a') 
-                        {
-                            map[i, collum] = new Tile(new Point(i, collum));                           
-                            gameObjekt.Add(new Key(new Point(i, collum), Color.Red));
-                        }
-                        if (b[i] == 'b')
-                        {
-                            map[i, collum] = new Tile(new Point(i, collum));
-                            gameObjekt.Add(new Key(new Point(i, collum), Color.Blue));
-                        }
-                        if (b[i] == 'c')
-                        {
-                            map[i, collum] = new Tile(new Point(i, collum));
-                            gameObjekt.Add(new Key(new Point(i, collum), Color.Yellow));
-                        }
+                            case '@':
+                                map[i, collum] = new Tile(new Point(i, collum));
+                                player.Location = new Point(i, collum);
+                                gameObjekt.Add(player);
+                                break;
+                            case 'a':
+                                map[i, collum] = new Tile(new Point(i, collum));
+                                gameObjekt.Add(new Key(new Point(i, collum), Color.Red));
+                                break;
+                            case 'b':
+                                map[i, collum] = new Tile(new Point(i, collum));
+                                gameObjekt.Add(new Key(new Point(i, collum), Color.Blue));
+                                break;
+                            case 'c':
+                                map[i, collum] = new Tile(new Point(i, collum));
+                                gameObjekt.Add(new Key(new Point(i, collum), Color.Yellow));
+                                break;
+                            default:
+                                break;
+                        }                       
                     }
                 }
-            }
-            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0);
-            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1);
-            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 2);
-            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 3);
-            SparaObjektPåRättPlats("RR            a       ###        b               C                                                RR", 4);
-            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 5);
-            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 6);
-            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 7);
-            SparaObjektPåRättPlats("RR                    ###                       ##################################################RR", 8);
-            SparaObjektPåRättPlats("RR       @            ###                       ###                                               RR", 9);
-            SparaObjektPåRättPlats("RR                    ###                        B                                                RR", 10);
-            SparaObjektPåRättPlats("RR                    ###                       ###                             c                 RR", 11);
-            SparaObjektPåRättPlats("RR                     A                        ###                                               RR", 12);
-            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 13);
-            SparaObjektPåRättPlats("RR                    ###                       ###                                               RR", 14);
-            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15);
-            SparaObjektPåRättPlats("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16);
+            } // Bryt ut from main så att den inte är nästlad i main
+            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0);
+            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 2);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 3);
+            CreateMapAndObjectsFromString("RR            a       ###        b               C                                                RR", 4);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 5);
+            CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 6);
+            CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 7);
+            CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 8);
+            CreateMapAndObjectsFromString("RR       @            ###                       ###                                               RR", 9);
+            CreateMapAndObjectsFromString("RR                    ###                        B                                                RR", 10);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                             c                 RR", 11);
+            CreateMapAndObjectsFromString("RR                     A                        ###                                               RR", 12);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 13);
+            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 14);
+            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15);
+            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16);
             GameManager gameManager = new GameManager();
             gameManager.GameObjekt = gameObjekt;
             gameManager.Player = player;
