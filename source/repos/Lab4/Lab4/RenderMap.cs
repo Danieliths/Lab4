@@ -17,18 +17,18 @@ namespace Lab4
                 Console.SetCursorPosition(x, y);
                 if (gameManager.Map[x,y].ConstruktColor != Color.Gray)
                 {
-                    gameManager.Map[x, y].ChangeColor(gameManager, gameManager.Map[x, y].ConstruktColor);
+                    gameManager.Map[x, y].PrintColoredSymbol(gameManager, gameManager.Map[x, y].ConstruktColor);
                 }
                 else
                 {
                     Console.Write(gameManager.Map[x,y].Symbol);
                 }               
-                foreach (var objekt in gameManager.GameObjekt)
+                foreach (var objekt in gameManager.GameObject)
                 {
                     Console.SetCursorPosition(x, y);                    
                     if (objekt.Location.row == x && objekt.Location.column == y)
                     {
-                        objekt.ChangeColor(gameManager, objekt.ObjektColor);                       
+                        objekt.PrintColoredSymbol(gameManager, objekt.ObjectColor);                       
                     }
                 }
             }

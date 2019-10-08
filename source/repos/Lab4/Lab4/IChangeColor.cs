@@ -2,6 +2,6 @@
 {
     interface IChangeColor
     {
-        void ChangeColor(GameManager game, Color color);        
+        void PrintColoredSymbol(GameManager gameManager, Color color);        
     }
 }

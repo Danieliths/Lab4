@@ -6,18 +6,18 @@ namespace Lab4
     {       
         public void Interact(GameManager gameManager, Door door)
         {
-            foreach (GameObjekt objekt in gameManager.Player.Inventory)
+            foreach (GameObject gameObject in gameManager.Player.Inventory)
             {
-                if (objekt.ObjektColor == door.ConstruktColor)
+                if (gameObject.ObjectColor == door.ConstruktColor)
                 {
                     door.CrossAble = true;
                     door.Symbol = '_';
-                    gameManager.Player.Inventory.Remove(objekt);
+                    gameManager.Player.Inventory.Remove(gameObject);
                     break;
                 }
             }           
         }
-        public override void ChangeColor(GameManager gameManager, Color color)
+        public override void PrintColoredSymbol(GameManager gameManager, Color color)
         {
             switch (color)
             {
@@ -46,7 +46,7 @@ namespace Lab4
             }
 
         }
-        public void Interact(GameManager gameManager, GameObjekt objekt)
+        public void Interact(GameManager gameManager, GameObject gameObject)
         {
             
         }

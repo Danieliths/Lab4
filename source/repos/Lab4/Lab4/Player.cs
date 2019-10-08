@@ -4,29 +4,29 @@ using System.Text;
 
 namespace Lab4
 {
-    class Player : GameObjekt, IInteractAble, IChangeColor
+    class Player : GameObject, IInteractAble, IChangeColor
     {
-        public void CheckInteractAble(GameManager gameManager, int x, int y)
+        public void CheckInteractAble(GameManager gameManager, int row, int column)
         {
-            if (gameManager.Map[x,y] is IInteractAble interactable)
+            if (gameManager.Map[row,column] is IInteractAble interactable)
             {
                 interactable.Interact(gameManager, (Door)interactable);
             }
             
-            foreach (var objekt in gameManager.GameObjekt)
+            foreach (var gameObject in gameManager.GameObject)
             {
-                if (objekt.Location.row == x && objekt.Location.column == y && objekt is IInteractAble)
+                if (gameObject.Location.row == row && gameObject.Location.column == column && gameObject is IInteractAble)
                 {
-                    objekt.Interact(gameManager, objekt);
+                    gameObject.Interact(gameManager, gameObject);
                     break;
                 }               
             }
         }
-        public override void Interact(GameManager gameManager, GameObjekt objekt) { }        
+        public override void Interact(GameManager gameManager, GameObject gameObject) { }        
         public override void Interact(GameManager gameManager, Door door) { }
         public int NumberOfMoves { get; set; }
-        public List<GameObjekt> Inventory { get; set; }
-        public override void ChangeColor(GameManager gameManager, Color color)
+        public List<GameObject> Inventory { get; set; }
+        public override void PrintColoredSymbol(GameManager gameManager, Color color)
         {
             switch (color)
             {
@@ -58,7 +58,7 @@ namespace Lab4
         {
             Symbol = '@';            
             NumberOfMoves = 0;
-            ObjektColor = Color.Red;
+            ObjectColor = Color.Red;
         }        
     }
 }

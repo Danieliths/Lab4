@@ -9,6 +9,6 @@ namespace Lab4
     {        
         public Player Player { get; set; }
         public Construkt[,] Map { get; set; }
-        public List<GameObjekt> GameObjekt { get; set; }
+        public List<GameObject> GameObject { get; set; }
     }
 }

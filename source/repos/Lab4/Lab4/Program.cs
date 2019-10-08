@@ -8,63 +8,63 @@ namespace Lab4
     {               
         static void Main(string[] args)
         {
-            List<GameObjekt> gameObjekt = new List<GameObjekt>();
+            List<GameObject> gameObjekt = new List<GameObject>();
             Player player = new Player();
             Construkt[,] map = new Construkt[100,17];
             RenderMap renderMap = new RenderMap();
             Input input = new Input();
             Movement movement = new Movement();
-            player.Inventory = new List<GameObjekt>();            
+            player.Inventory = new List<GameObject>();            
             void CreateMapAndObjectsFromString(string symbols, int collum)
             {
                 char[] charArray = new char[symbols.Length];
-                for (int i = 0; i < symbols.Length; i++)
+                for (int row = 0; row < symbols.Length; row++)
                 {
                     using (StringReader sr = new StringReader(symbols))
                     {
                         sr.Read(charArray, 0, symbols.Length);
-                        switch (charArray[i])
+                        switch (charArray[row])
                         {
                             case '#':
-                                map[i, collum] = new Wall(new Point(i, collum));
+                                map[row, collum] = new Wall(new Point(row, collum));
                                 break;
                             case ' ':
-                                map[i, collum] = new Tile(new Point(i, collum));
+                                map[row, collum] = new Tile(new Point(row, collum));
                                 break;
                             case 'R':
-                                map[i, collum] = new Wall(new Point(i, collum));
-                                map[i, collum].Revealed = true;
+                                map[row, collum] = new Wall(new Point(row, collum));
+                                map[row, collum].Revealed = true;
                                 break;
                             case 'A':
-                                map[i, collum] = new Door(new Point(i, collum), Color.Red);
+                                map[row, collum] = new Door(new Point(row, collum), Color.Red);
                                 break;
                             case 'B':
-                                map[i, collum] = new Door(new Point(i, collum), Color.Blue);
+                                map[row, collum] = new Door(new Point(row, collum), Color.Blue);
                                 break;
                             case 'C':
-                                map[i, collum] = new Door(new Point(i, collum), Color.Yellow);
+                                map[row, collum] = new Door(new Point(row, collum), Color.Yellow);
                                 break;
                             default:
                                 break;
                         }
-                        switch (charArray[i])
+                        switch (charArray[row])
                         {
                             case '@':
-                                map[i, collum] = new Tile(new Point(i, collum));
-                                player.Location = new Point(i, collum);
+                                map[row, collum] = new Tile(new Point(row, collum));
+                                player.Location = new Point(row, collum);
                                 gameObjekt.Add(player);
                                 break;
                             case 'a':
-                                map[i, collum] = new Tile(new Point(i, collum));
-                                gameObjekt.Add(new Key(new Point(i, collum), Color.Red));
+                                map[row, collum] = new Tile(new Point(row, collum));
+                                gameObjekt.Add(new Key(new Point(row, collum), Color.Red));
                                 break;
                             case 'b':
-                                map[i, collum] = new Tile(new Point(i, collum));
-                                gameObjekt.Add(new Key(new Point(i, collum), Color.Blue));
+                                map[row, collum] = new Tile(new Point(row, collum));
+                                gameObjekt.Add(new Key(new Point(row, collum), Color.Blue));
                                 break;
                             case 'c':
-                                map[i, collum] = new Tile(new Point(i, collum));
-                                gameObjekt.Add(new Key(new Point(i, collum), Color.Yellow));
+                                map[row, collum] = new Tile(new Point(row, collum));
+                                gameObjekt.Add(new Key(new Point(row, collum), Color.Yellow));
                                 break;
                             default:
                                 break;
@@ -90,7 +90,7 @@ namespace Lab4
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15);
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16);
             GameManager gameManager = new GameManager();
-            gameManager.GameObjekt = gameObjekt;
+            gameManager.GameObject = gameObjekt;
             gameManager.Player = player;
             gameManager.Map = map;            
             renderMap.UpdateAllPoints(gameManager);
@@ -98,7 +98,7 @@ namespace Lab4
 
             while (true)
             {
-                movement.ObjektMovment(gameManager, player, input.DirectionInput(gameManager));
+                movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
                 renderMap.PrintAroundPlayer(gameManager);
             }                                                                    
         }

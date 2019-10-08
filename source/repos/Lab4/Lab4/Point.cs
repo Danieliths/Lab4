@@ -6,10 +6,10 @@ namespace Lab4
 {
     public struct Point 
     {
-        public Point(int x, int y)
+        public Point(int row, int column)
         {
-            row = x;
-            column = y;
+            this.row = row;
+            this.column = column;
         }
         public readonly int row;
         public readonly int column;

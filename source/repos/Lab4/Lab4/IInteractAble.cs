@@ -2,7 +2,7 @@
 {
     interface IInteractAble
     {
-        void Interact(GameManager gameManager, GameObjekt objekt);
+        void Interact(GameManager gameManager, GameObject gameObject);
         void Interact(GameManager gameManager, Door door);
     }
 }

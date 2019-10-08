@@ -2,14 +2,14 @@
 
 namespace Lab4
 {
-    class Key : GameObjekt
+    class Key : GameObject
     {
-        public override void Interact(GameManager gameManager, GameObjekt objekt)
+        public override void Interact(GameManager gameManager, GameObject objekt)
         {
             gameManager.Player.Inventory.Add(objekt);
-            gameManager.GameObjekt.Remove(objekt);
+            gameManager.GameObject.Remove(objekt);
         }
-        public override void ChangeColor(GameManager gameManager, Color color)
+        public override void PrintColoredSymbol(GameManager gameManager, Color color)
         {
             switch (color)
             {
@@ -42,7 +42,7 @@ namespace Lab4
         {
             Symbol = 'K';
             Location = location;
-            ObjektColor = color;
+            ObjectColor = color;
         }
     }
 }
