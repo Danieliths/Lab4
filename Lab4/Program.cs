@@ -9,19 +9,18 @@ namespace Lab4
         //               TO DO Kriterier
         // 1: det ska gå att klara spelet och se sin poäng
         //   för VG
-        // 1: rum kan ha fällor (synliga eller osynliga) som orsakar extra drag att ta sig över
-        // ny Trap class arv av gameobject IIntreract adda mer spelar moves
+        
         // 2: fler föremål, som kan användas på dörrar, monster eller fällor; eller som ger poäng
         // ny potion class arv av gameobject IInteract redusera spelarmoves
         // 3: rum som man inte ser vad de innehåller förrän man går in i dem ?? fog of war?
 
-        // adda exit 
+        
         // adda gamestate
         // adda vettig gameloop efter gamestate
         // adda winningscreen
-        // adda traps
+        
         // adda potions
-        // adda player totalmoves
+        
         static void Main(string[] args)
         {
             // sätta up en property i GameManager för gamestate? skapa gameManager innan sedan en switchcase i en whileloop?!?!? 
