@@ -45,7 +45,7 @@ namespace Lab4
             
             // sätt gamestate till play
 
-            while (true) // while gameManager.GameState == Play ?
+            while (gameManager.Map[gameManager.Player.Location.row, gameManager.Player.Location.column].Symbol != 'E') // while gameManager.GameState == Play ?
             {
                 mapRenderer.PrintInventory(gameManager);
                 mapRenderer.PrintNumberOfMoves(gameManager);

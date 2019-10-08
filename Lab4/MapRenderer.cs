@@ -51,6 +51,11 @@ namespace Lab4
                     Console.Write(symbol);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     break;
+                case Color.Green:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(symbol);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
                 default:
                     break;
             }

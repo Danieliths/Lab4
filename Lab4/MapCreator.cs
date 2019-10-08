@@ -34,6 +34,9 @@ namespace Lab4
                         case 'C':
                             gameManager.Map[row, collum] = new Door(new Point(row, collum), Color.Yellow);
                             break;
+                        case 'E':
+                            gameManager.Map[row, collum] = new Exit(new Point(row, collum));
+                            break;
                         default:
                             break;
                     }
@@ -68,7 +71,7 @@ namespace Lab4
             CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 2, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 3, gameManager);
-            CreateMapAndObjectsFromString("RR            a       ###        b               C                                                RR", 4, gameManager);
+            CreateMapAndObjectsFromString("RR            a       ###        b               C                                     E          RR", 4, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 5, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 6, gameManager);
             CreateMapAndObjectsFromString("RR                    ###                       ##################################################RR", 7, gameManager);
