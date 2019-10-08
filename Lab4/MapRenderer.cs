@@ -6,6 +6,7 @@ namespace Lab4
 { 
     class MapRenderer
     {
+        private int eventNumber = 1;
         public void UodatePoint(GameManager gameManager, int row, int column)
         {
             if (gameManager.Map[row, column].Revealed == false)
@@ -100,6 +101,19 @@ namespace Lab4
         {
             Console.SetCursorPosition(0, 21);
             Console.Write("Moves: " + gameManager.Player.NumberOfMoves);
+        }
+        public void PrintEvents(GameManager gameManager)
+        {
+            foreach (IInteractAble interactAble in gameManager.EventObject)
+            {
+                Console.SetCursorPosition(0, 21 + eventNumber);
+                eventNumber++;
+                interactAble.Event(gameManager, (GameObject)interactAble);
+                Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
+
+            }
+            gameManager.EventObject.RemoveRange(0, gameManager.EventObject.Count);
+            
         }
     }
 }

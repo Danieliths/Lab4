@@ -38,6 +38,7 @@ namespace Lab4
             gameManager.GameObject = new List<GameObject>();
             gameManager.Player = player;
             gameManager.Map = new Construkt[100, 17];
+            gameManager.EventObject = new List<GameObject>();
             mapCreator.CrateMap(gameManager);
             Console.CursorVisible = false;
             mapRenderer.UpdateAllPoints(gameManager);
@@ -49,6 +50,7 @@ namespace Lab4
                 mapRenderer.PrintInventory(gameManager);
                 mapRenderer.PrintNumberOfMoves(gameManager);
                 mapRenderer.PrintAroundPlayer(gameManager);
+                mapRenderer.PrintEvents(gameManager);
                 movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
             }  
             // sätta IInteractable på utgången som sätter gamestate till End?

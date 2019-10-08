@@ -12,12 +12,24 @@ namespace Lab4
                 {
                     construkt.CrossAble = true;
                     construkt.Symbol = '_';
+                    gameManager.EventObject.Add(gameObject);
                     gameManager.Player.Inventory.Remove(gameObject);
                     break;
                 }
             }           
         }       
         public void Interact(GameManager gameManager, GameObject gameObject) { }
+
+        public void Event(GameManager gameManager, GameObject gameObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Event(GameManager gameManager, Construkt construkt)
+        {
+            throw new NotImplementedException();
+        }
+
         public Door(Point location, Color color)
         {
             Symbol = 'D';
