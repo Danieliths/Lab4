@@ -11,7 +11,6 @@ namespace Lab4
             gameManager.GameObject.Remove(gameObject);
         }
         public void Interact(GameManager gameManager, Construkt construkt) { }
-
         public void Event(GameManager gameManager, GameObject gameObject)
         {
             if (gameManager.Map[gameManager.Player.Location.row, gameManager.Player.Location.column].Symbol == '_')
@@ -24,7 +23,6 @@ namespace Lab4
             }
         }
         public void Event(GameManager gameManager, Construkt construkt) { }
-
         public Key(Point location, Color color)
         {
             Symbol = 'K';

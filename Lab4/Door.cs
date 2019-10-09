@@ -29,7 +29,6 @@ namespace Lab4
         {
             throw new NotImplementedException();
         }
-
         public Door(Point location, Color color)
         {
             Symbol = 'D';

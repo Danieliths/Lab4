@@ -10,7 +10,6 @@
             Location = location;
             ConstruktColor = Color.Green;
         }
-
         public void Interact(GameManager gameManager, GameObject gameObject) { }
         public void Interact(GameManager gameManager, Construkt construkt)
         {

@@ -6,14 +6,14 @@ namespace Lab4
     class MapCreator
     {
         public MapCreator() { }        
-        public void CreateMapAndObjectsFromString(string symbols, int collum, GameManager gameManager)
+        public void CreateMapAndObjectsFromString(string mapLayoutRow, int collum, GameManager gameManager)
         {
-            char[] charArray = new char[symbols.Length];
-            for (int row = 0; row < symbols.Length; row++)
+            char[] charArray = new char[mapLayoutRow.Length];
+            for (int row = 0; row < mapLayoutRow.Length; row++)
             {
-                using (StringReader sr = new StringReader(symbols))
+                using (StringReader sr = new StringReader(mapLayoutRow))
                 {
-                    sr.Read(charArray, 0, symbols.Length);
+                    sr.Read(charArray, 0, mapLayoutRow.Length);
                     switch (charArray[row])
                     {
                         case '#':
@@ -100,7 +100,6 @@ namespace Lab4
                 Console.SetCursorPosition(50, i + 20);
                 CreateMapAndObjectsFromString(stringRow[i], i, gameManager);
             };
-        }
-        
+        }       
     }
 }
