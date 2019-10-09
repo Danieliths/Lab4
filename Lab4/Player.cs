@@ -12,19 +12,19 @@ namespace Lab4
         {
             Symbol = '@';            
             NumberOfMoves = 0;
-            ObjectColor = Color.Red;
+            EntityColor = ConsoleColor.Red;
         }        
         public void CheckInteractAble(GameManager gameManager, int row, int column)
         {
-            if (gameManager.Map[row,column] is IInteractAble interactable)
+            if (gameManager.Map[row,column] is IInteractAble interactableConstrukt)
             {
-                interactable.Interact(gameManager, gameManager.Map[row, column]); 
+                interactableConstrukt.Interact(gameManager, gameManager.Map[row, column]); 
             }            
             foreach (var gameObject in gameManager.GameObject)
             {
-                if (gameObject.Location.row == row && gameObject.Location.column == column && gameObject is IInteractAble interactAble)
+                if (gameObject.Location.row == row && gameObject.Location.column == column && gameObject is IInteractAble interactAbleObject) 
                 {
-                    interactAble.Interact(gameManager, gameObject);
+                    interactAbleObject.Interact(gameManager, gameObject);
                     break;
                 }               
             }

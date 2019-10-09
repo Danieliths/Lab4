@@ -27,13 +27,13 @@ namespace Lab4
                             gameManager.Map[row, collum].Revealed = true;
                             break;
                         case 'A':
-                            gameManager.Map[row, collum] = new Door(new Point(row, collum), Color.Red);
+                            gameManager.Map[row, collum] = new Door(new Point(row, collum), ConsoleColor.Red);
                             break;
                         case 'B':
-                            gameManager.Map[row, collum] = new Door(new Point(row, collum), Color.Blue);
+                            gameManager.Map[row, collum] = new Door(new Point(row, collum), ConsoleColor.Blue);
                             break;
                         case 'C':
-                            gameManager.Map[row, collum] = new Door(new Point(row, collum), Color.Yellow);
+                            gameManager.Map[row, collum] = new Door(new Point(row, collum), ConsoleColor.Yellow);
                             break;
                         case 'E':
                             gameManager.Map[row, collum] = new Exit(new Point(row, collum));
@@ -50,15 +50,15 @@ namespace Lab4
                             break;
                         case 'a':
                             gameManager.Map[row, collum] = new Tile(new Point(row, collum));
-                            gameManager.GameObject.Add(new Key(new Point(row, collum), Color.Red));
+                            gameManager.GameObject.Add(new Key(new Point(row, collum), ConsoleColor.Red));
                             break;
                         case 'b':
                             gameManager.Map[row, collum] = new Tile(new Point(row, collum));
-                            gameManager.GameObject.Add(new Key(new Point(row, collum), Color.Blue));
+                            gameManager.GameObject.Add(new Key(new Point(row, collum), ConsoleColor.Blue));
                             break;
                         case 'c':
                             gameManager.Map[row, collum] = new Tile(new Point(row, collum));
-                            gameManager.GameObject.Add(new Key(new Point(row, collum), Color.Yellow));
+                            gameManager.GameObject.Add(new Key(new Point(row, collum), ConsoleColor.Yellow));
                             break;
                         case 'T':
                             gameManager.Map[row, collum] = new Tile(new Point(row, collum));
@@ -97,7 +97,7 @@ namespace Lab4
             var stringRow = mapLayout.Split("\n");
             for (int i = 0; i < stringRow.Length; i++)
             {
-                Console.SetCursorPosition(50, i + 20);
+                Console.SetCursorPosition(50, i + 20); //namnge magiska siffror
                 CreateMapAndObjectsFromString(stringRow[i], i, gameManager);
             };
         }       

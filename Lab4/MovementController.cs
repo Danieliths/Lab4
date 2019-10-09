@@ -5,7 +5,7 @@ namespace Lab4
 {
     class MovementController
     {
-        void ObjectMoveTo(GameManager gameManager, GameObject objectToMove, Direction directionToMove, int row, int column)
+        void ObjectMoveTo(GameManager gameManager, GameObject objectToMove, int row, int column)
         {
             gameManager.Player.CheckInteractAble(gameManager, objectToMove.Location.row + row, objectToMove.Location.column + column);
             if (gameManager.Map[objectToMove.Location.row + row, objectToMove.Location.column + column].CrossAble)
@@ -19,19 +19,19 @@ namespace Lab4
             switch (directionToMove)
             {
                 case Direction.Upp:
-                    ObjectMoveTo(gameManager, objectToMove, directionToMove, 0, -1);
+                    ObjectMoveTo(gameManager, objectToMove, 0, -1);
                     break;
 
                 case Direction.Down:                    
-                    ObjectMoveTo(gameManager, objectToMove, directionToMove, 0, +1);
+                    ObjectMoveTo(gameManager, objectToMove, 0, +1);
                     break;
 
                 case Direction.Right:                    
-                    ObjectMoveTo(gameManager, objectToMove, directionToMove, +1, 0);
+                    ObjectMoveTo(gameManager, objectToMove, +1, 0);
                     break;
 
                 case Direction.Left:
-                    ObjectMoveTo(gameManager, objectToMove, directionToMove, -1, 0);
+                    ObjectMoveTo(gameManager, objectToMove, -1, 0);
                     break;                
                      
                 default:

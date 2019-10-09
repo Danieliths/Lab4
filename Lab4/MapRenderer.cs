@@ -8,60 +8,28 @@ namespace Lab4
     {
         public void UodatePoint(GameManager gameManager, int row, int column)
         {
-            if (gameManager.Map[row, column].Revealed == false)
-            {
-                return;
-            }
             if (gameManager.Map[row, column].Revealed == true)
             {
                 Console.SetCursorPosition(row, column);
-                PrintColoredSymbol(gameManager, gameManager.Map[row, column].ConstruktColor, gameManager.Map[row, column].Symbol);                               
+                PrintColoredSymbol(gameManager, gameManager.Map[row, column].EntityColor, gameManager.Map[row, column].Symbol);                               
                 foreach (var gameObject in gameManager.GameObject)
                 {
                     Console.SetCursorPosition(row, column);                    
                     if (gameObject.Location.row == row && gameObject.Location.column == column)
                     {
-                        PrintColoredSymbol(gameManager, gameObject.ObjectColor, gameObject.Symbol);                       
+                        PrintColoredSymbol(gameManager, gameObject.EntityColor, gameObject.Symbol);                       
                     }
                 }
             }
         }
-        void PrintColoredSymbol(GameManager gameManager, Color color, char symbol)
+        void PrintColoredSymbol(GameManager gameManager, ConsoleColor color, char symbol)
         {
-            switch (color)
-            {
-                case Color.Red:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Blue:
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Gray:
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Yellow:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case Color.Green:
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write(symbol);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                default:
-                    break;
-            }
+            Console.ForegroundColor = color;
+            Console.Write(symbol);
+            Console.ForegroundColor = ConsoleColor.Gray;                   
         }
         public void UpdateAllPoints(GameManager gameManager)
-        {
-            
+        {            
             for (int column = 0; column < gameManager.Map.GetLength(1); column++)
             {
                 for (int row = 0; row < gameManager.Map.GetLength(0); row++)
@@ -87,8 +55,7 @@ namespace Lab4
                     gameManager.Map[x, y].Revealed = true;
                     UodatePoint(gameManager, x, y);
                 }
-            }
-            
+            }          
         }       
         public void PrintInventory(GameManager gameManager)
         {
@@ -96,15 +63,15 @@ namespace Lab4
             Console.Write("Keys: ");
             foreach (var gameObject in gameManager.Player.Inventory)
             {
-                PrintColoredSymbol(gameManager, gameObject.ObjectColor,gameObject.Symbol);
+                PrintColoredSymbol(gameManager, gameObject.EntityColor,gameObject.Symbol);
                 Console.Write(" ");
             }
             Console.Write(" ");
-        }
+        } 
         public void PrintNumberOfMoves(GameManager gameManager)
         {
             Console.SetCursorPosition(0, 21);
-            Console.Write("Moves: " + gameManager.Player.NumberOfMoves);
+            Console.Write("Moves: {0}   ", gameManager.Player.NumberOfMoves );
             Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
         }
         public void PrintEvent(GameManager gameManager)

@@ -8,30 +8,18 @@ namespace Lab4
         {
             Symbol = 'P';
             Location = location;
-            ObjectColor = Color.Green;
+            EntityColor = ConsoleColor.Green;
         }
-
-        public void Event(GameManager gameManager, GameObject gameObject)
+        public void Event(GameManager gameManager, Entity entity)
         {
             Console.Write("You consume a tasty potion and it feel great!\n" +
                 "You lost 30 Moves");
         }
-
-        public void Event(GameManager gameManager, Construkt construkt)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Interact(GameManager gameManager, GameObject gameObject)
+        public void Interact(GameManager gameManager, Entity entity)
         {
             gameManager.Player.NumberOfMoves -= 30;
-            gameManager.EventObject.Add(gameObject);
-            gameManager.GameObject.Remove(gameObject);
-        }
-
-        public void Interact(GameManager gameManager, Construkt construkt)
-        {
-            throw new NotImplementedException();
+            gameManager.EventObject.Add(this);
+            gameManager.GameObject.Remove(this);
         }
     }
 }

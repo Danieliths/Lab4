@@ -4,38 +4,31 @@ namespace Lab4
 {
     class Door : Construkt, IInteractAble
     {       
-        public void Interact(GameManager gameManager, Construkt construkt)
+        public void Interact(GameManager gameManager, Entity entity)
         {
             foreach (GameObject gameObject in gameManager.Player.Inventory)
             {
-                if (gameObject.ObjectColor == construkt.ConstruktColor)
+                if (gameObject.EntityColor == entity.EntityColor)
                 {
-                    construkt.CrossAble = true;
-                    construkt.Symbol = '_';
+                    CrossAble = true;
+                    Symbol = '_';
                     gameManager.EventObject.Add(gameObject);
                     gameManager.Player.Inventory.Remove(gameObject);
                     break;
                 }
             }           
-        }       
-        public void Interact(GameManager gameManager, GameObject gameObject) { }
-
-        public void Event(GameManager gameManager, GameObject gameObject)
+        }               
+        public void Event(GameManager gameManager, Entity entity)
         {
             throw new NotImplementedException();
         }
-
-        public void Event(GameManager gameManager, Construkt construkt)
-        {
-            throw new NotImplementedException();
-        }
-        public Door(Point location, Color color)
+        public Door(Point location, ConsoleColor color)
         {
             Symbol = 'D';
             Revealed = false;
             CrossAble = false;
             Location = location;
-            ConstruktColor = color;            
+            EntityColor = color;            
         }
     }
 }

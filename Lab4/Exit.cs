@@ -1,4 +1,6 @@
-﻿namespace Lab4
+﻿using System;
+
+namespace Lab4
 {
     class Exit : Construkt, IInteractAble
     {
@@ -8,14 +10,13 @@
             Revealed = false;
             CrossAble = true;
             Location = location;
-            ConstruktColor = Color.Green;
-        }
-        public void Interact(GameManager gameManager, GameObject gameObject) { }
-        public void Interact(GameManager gameManager, Construkt construkt)
+            EntityColor = ConsoleColor.Green;
+        }        
+        public void Interact(GameManager gameManager, Entity entity)
         {
-            gameManager.Gamestate = GameState.EndScreen;
+            gameManager.SetGameState(GameState.EndScreen);
         }
-        public void Event(GameManager gameManager, GameObject gameObject) { }
-        public void Event(GameManager gameManager, Construkt construkt) { }
+        public void Event(GameManager gameManager, Entity entity) { }
+        
     }
 }

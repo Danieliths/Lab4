@@ -1,4 +1,6 @@
-﻿namespace Lab4
+﻿using System;
+
+namespace Lab4
 {
     class Tile : Construkt
     {        
@@ -8,7 +10,7 @@
             Revealed = false;
             CrossAble = true;
             Location = location;
-            ConstruktColor = Color.Gray;
+            EntityColor = ConsoleColor.Gray;
         }
     }
 }

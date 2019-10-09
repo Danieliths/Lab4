@@ -1,4 +1,6 @@
-﻿namespace Lab4
+﻿using System;
+
+namespace Lab4
 {
     class Wall : Construkt
     {
@@ -8,7 +10,7 @@
             Revealed = false;
             CrossAble = false;
             Location = location;
-            ConstruktColor = Color.Gray;
+            EntityColor = ConsoleColor.Gray;
         }
     }
 }

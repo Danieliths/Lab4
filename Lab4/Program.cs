@@ -9,27 +9,26 @@ namespace Lab4
         static void Main(string[] args)
         {
             GameManager gameManager = new GameManager();
-            gameManager.Gamestate = GameState.SetUp;
             Player player = new Player();
             MapRenderer mapRenderer = new MapRenderer();
             InputManager input = new InputManager();
             MovementController movement = new MovementController();
-            MapCreator mapCreator = new MapCreator();
-            do
-            {
-                switch (gameManager.Gamestate)
+            MapCreator mapCreator = new MapCreator();            
+            while (gameManager.GameState != GameState.ExitGame)
+            {                
+                switch (gameManager.GameState)
                 {
-                    case GameState.SetUp:
+                    case GameState.SetUp:                        
                         player.Inventory = new List<GameObject>();
-                        gameManager.GameObject = new List<GameObject>();
+                        gameManager.GameObject = new List<GameObject>(); // skapa dessa i konstruktorn för gameManager?
                         gameManager.Player = player;
                         gameManager.Map = new Construkt[100, 17];
                         gameManager.EventObject = new List<GameObject>();
-                        mapCreator.CreateMap(gameManager);
                         Console.CursorVisible = false;
+                        mapCreator.CreateMap(gameManager);
                         mapRenderer.UpdateAllPoints(gameManager);
                         mapRenderer.PrintInstructionWindow();
-                        gameManager.Gamestate = GameState.Playing;
+                        gameManager.SetGameState(GameState.Playing);
                         break;
 
                     case GameState.Playing:
@@ -43,14 +42,14 @@ namespace Lab4
                     case GameState.EndScreen:
                         Console.Clear();
                         mapRenderer.PrintEndScreen(gameManager);
-                        gameManager.Gamestate = GameState.ExitGame;
+                        gameManager.SetGameState(GameState.ExitGame);
                         Console.ReadKey();
                         break;
                     
                     default:
                         break;
                 }
-            } while (gameManager.Gamestate != GameState.ExitGame);
+            } 
         }
     }
 }

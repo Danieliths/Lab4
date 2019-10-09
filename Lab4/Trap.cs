@@ -8,29 +8,17 @@ namespace Lab4
         {
             Symbol = 'T';            
             Location = location;
-            ObjectColor = Color.Red;
+            EntityColor = ConsoleColor.Red;
         }
-
-        public void Event(GameManager gameManager, GameObject gameObject)
+        public void Event(GameManager gameManager, Entity entity)
         {
             Console.Write("You got stuck in a trap for 50 moves");
         }
-
-        public void Event(GameManager gameManager, Construkt construkt)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Interact(GameManager gameManager, GameObject gameObject)
+        public void Interact(GameManager gameManager, Entity entity)
         {
             gameManager.Player.NumberOfMoves += 50;
-            gameManager.EventObject.Add(gameObject);
-            gameManager.GameObject.Remove(gameObject);
-        }
-        public void Interact(GameManager gameManager, Construkt construkt) { }
-        
-          
-        
-       
+            gameManager.EventObject.Add(this);
+            gameManager.GameObject.Remove(this);
+        }                              
     }
 }
