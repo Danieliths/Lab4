@@ -6,7 +6,6 @@ namespace Lab4
 { 
     class MapRenderer
     {
-        private int eventNumber = 1;
         public void UodatePoint(GameManager gameManager, int row, int column)
         {
             if (gameManager.Map[row, column].Revealed == false)
@@ -109,18 +108,24 @@ namespace Lab4
         }
         public void PrintEvent(GameManager gameManager)
         {
-            foreach (IInteractAble interactAble in gameManager.EventObject)
+            int eventNummer = 0;
+            if (gameManager.EventObject.Count > 0)
             {
-                Console.SetCursorPosition(0, 21 + eventNumber);
-                eventNumber++;
-                interactAble.Event(gameManager, (GameObject)interactAble);
-                Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
-
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.SetCursorPosition(0, 22);
+                    Console.Write("                                                 ");
+                }
             }
-            gameManager.EventObject.RemoveRange(0, gameManager.EventObject.Count);
-            
-        }
-        
+            foreach (IInteractAble interactAble in gameManager.EventObject)
+            {                
+                Console.SetCursorPosition(0, 22 + eventNummer);
+                interactAble.Event(gameManager, (GameObject)interactAble);
+                eventNummer++;
+                Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
+            }
+            gameManager.EventObject.RemoveRange(0, gameManager.EventObject.Count);            
+        }        
         public void PrintInstructionWindow()
         {
             string instructionWindow =

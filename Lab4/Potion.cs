@@ -13,7 +13,8 @@ namespace Lab4
 
         public void Event(GameManager gameManager, GameObject gameObject)
         {
-            Console.Write("You consume the tasty potion and it feels like you lost 30 Moves");
+            Console.Write("You consume a tasty potion and it feel great!\n" +
+                "You lost 30 Moves");
         }
 
         public void Event(GameManager gameManager, Construkt construkt)
