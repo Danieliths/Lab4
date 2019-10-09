@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Lab4
 {
@@ -73,26 +74,34 @@ namespace Lab4
                 }
             }           
         } 
-        public void CrateMap(GameManager gameManager)
-        {           
-            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 0, gameManager);
-            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 1, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 2, gameManager);
-            CreateMapAndObjectsFromString("RR   T                ###                       ###                                               RR", 3, gameManager);
-            CreateMapAndObjectsFromString("RR            a       ###        b               C                                     E          RR", 4, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                       ###                                               RR", 5, gameManager);
-            CreateMapAndObjectsFromString("RR      T             ###                       ##################################################RR", 6, gameManager);
-            CreateMapAndObjectsFromString("RR              T     ###           T           ##################################################RR", 7, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###     P                 ##################################################RR", 8, gameManager);
-            CreateMapAndObjectsFromString("RR       @            ###              T        ###                                               RR", 9, gameManager);
-            CreateMapAndObjectsFromString("RR                    ###                        B            T                                   RR", 10, gameManager);
-            CreateMapAndObjectsFromString("RR   T    T T         ###     T                 ###                      T      c                 RR", 11, gameManager);
-            CreateMapAndObjectsFromString("RR                     A                        ###                                               RR", 12, gameManager);
-            CreateMapAndObjectsFromString("RR                    ### T            T        ###           T                                   RR", 13, gameManager);
-            CreateMapAndObjectsFromString("RRP         T         ###                       ###                                     T         RR", 14, gameManager);
-            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 15, gameManager);
-            CreateMapAndObjectsFromString("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR", 16, gameManager);           
-        }        
+        
+        public void CreateMap(GameManager gameManager)
+        {
+        string mapLayout =
+            "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\n" +
+            "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\n" +
+            "RR                    ###                       ###                                               RR\n" +
+            "RR   T                ###                       ###                                               RR\n" +
+            "RR            a       ###        b               C                                     E          RR\n" +
+            "RR                    ###                       ###                                               RR\n" +
+            "RR      T             ###                       ##################################################RR\n" +
+            "RR              T     ###           T           ##################################################RR\n" +
+            "RR                    ###     P                 ##################################################RR\n" +
+            "RR       @            ###              T        ###                                               RR\n" +
+            "RR                    ###                        B            T                                   RR\n" +
+            "RR   T    T T         ###     T                 ###                      T      c                 RR\n" +
+            "RR                     A                        ###                                               RR\n" +
+            "RR                    ### T            T        ###           T                                   RR\n" +
+            "RRP         T         ###                       ###                                     T         RR\n" +
+            "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\n" +
+            "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
+            var stringRow = mapLayout.Split("\n");
+            for (int i = 0; i < stringRow.Length; i++)
+            {
+                Console.SetCursorPosition(50, i + 20);
+                CreateMapAndObjectsFromString(stringRow[i], i, gameManager);
+            };
+        }
         
     }
 }

@@ -134,11 +134,11 @@ namespace Lab4
                 $"*  Door:    D                 *\n" +
                 $"*  Exit:    E                 *\n" +
                 $"*******************************";
-            var rows = instructionWindow.Split("\n");
-            for (int i = 0; i < rows.Length; i++)
+            var stringRow = instructionWindow.Split("\n");
+            for (int i = 0; i < stringRow.Length; i++)
             {
                 Console.SetCursorPosition(50, i+ 20);
-                Console.Write(rows[i]);
+                Console.Write(stringRow[i]);
             }
         }                
     }

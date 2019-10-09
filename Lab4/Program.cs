@@ -8,9 +8,7 @@ namespace Lab4
     {
         //               TO DO Kriterier        
         // adda gamestate
-        // adda vettig gameloop efter gamestate
-        // adda winningscreen
-        // adda instructioner 
+        // adda vettig gameloop efter gamestate       
         // ändra hur events visas
         
         static void Main(string[] args)
@@ -30,7 +28,7 @@ namespace Lab4
             gameManager.Player = player;
             gameManager.Map = new Construkt[100, 17];
             gameManager.EventObject = new List<GameObject>();
-            mapCreator.CrateMap(gameManager);
+            mapCreator.CreateMap(gameManager);
             Console.CursorVisible = false;
             mapRenderer.UpdateAllPoints(gameManager);
             mapRenderer.PrintInstructionWindow();
