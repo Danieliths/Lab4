@@ -5,13 +5,7 @@ using System.IO;
 namespace Lab4
 {
     class Program
-    {
-        //               TO DO Kriterier        
-        // adda gamestate
-        // adda vettig gameloop efter gamestate       
-        // kolla på hur potionen skriver ut movementtalet. 
-        
-        
+    {      
         static void Main(string[] args)
         {
             GameManager gameManager = new GameManager();
@@ -21,7 +15,7 @@ namespace Lab4
             InputManager input = new InputManager();
             MovementController movement = new MovementController();
             MapCreator mapCreator = new MapCreator();
-            while (gameManager.Gamestate != GameState.ExitGame)
+            do
             {
                 switch (gameManager.Gamestate)
                 {
@@ -40,29 +34,23 @@ namespace Lab4
 
                     case GameState.Playing:
                         mapRenderer.PrintInventory(gameManager);
-                        mapRenderer.PrintNumberOfMoves(gameManager);
                         mapRenderer.PrintAroundPlayer(gameManager);
                         mapRenderer.PrintEvent(gameManager);
+                        mapRenderer.PrintNumberOfMoves(gameManager);
                         movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
                         break;
 
                     case GameState.EndScreen:
-
+                        Console.Clear();
+                        mapRenderer.PrintEndScreen(gameManager);
                         gameManager.Gamestate = GameState.ExitGame;
+                        Console.ReadKey();
                         break;
-                    case GameState.ExitGame:
-                        break;
+                    
                     default:
                         break;
                 }
-            }
-
-
-            // sätt gamestate till play
-
-            // sätta IInteractable på utgången som sätter gamestate till End?
-            // kanske en Endscreen som körs och visar upp dina totala moves
-
+            } while (gameManager.Gamestate != GameState.ExitGame);
         }
     }
 }

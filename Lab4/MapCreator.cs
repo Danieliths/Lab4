@@ -73,8 +73,7 @@ namespace Lab4
                     }
                 }
             }           
-        } 
-        
+        }         
         public void CreateMap(GameManager gameManager)
         {
         string mapLayout =
@@ -82,17 +81,17 @@ namespace Lab4
             "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\n" +
             "RR                    ###                       ###                                               RR\n" +
             "RR   T                ###                       ###                                               RR\n" +
-            "RR            a       ###        b               C                                     E          RR\n" +
+            "RR            a       ###        b               C                                     E        P RR\n" +
             "RR                    ###                       ###                                               RR\n" +
             "RR      T             ###                       ##################################################RR\n" +
             "RR              T     ###           T           ##################################################RR\n" +
-            "RR                    ###     P                 ##################################################RR\n" +
+            "RR                    ###                       ##################################################RR\n" +
             "RR       @            ###              T        ###                                               RR\n" +
             "RR                    ###                        B            T                                   RR\n" +
             "RR   T    T T         ###     T                 ###                      T      c                 RR\n" +
             "RR                     A                        ###                                               RR\n" +
             "RR                    ### T            T        ###           T                                   RR\n" +
-            "RRP         T         ###                       ###                                     T         RR\n" +
+            "RR  P       T         ###        P              ###                                     T         RR\n" +
             "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\n" +
             "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR";
             var stringRow = mapLayout.Split("\n");

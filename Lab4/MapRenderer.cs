@@ -79,7 +79,7 @@ namespace Lab4
             }
         }
         public void PrintAroundPlayer(GameManager gameManager)
-        {
+        {            
             for (int x = gameManager.Player.Location.row - 2; x < gameManager.Player.Location.row + 3; x++)
             {
                 for (int y = gameManager.Player.Location.column -2; y < gameManager.Player.Location.column + 3; y++)
@@ -88,7 +88,7 @@ namespace Lab4
                     UodatePoint(gameManager, x, y);
                 }
             }
-            Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
+            
         }       
         public void PrintInventory(GameManager gameManager)
         {
@@ -105,6 +105,7 @@ namespace Lab4
         {
             Console.SetCursorPosition(0, 21);
             Console.Write("Moves: " + gameManager.Player.NumberOfMoves);
+            Console.SetCursorPosition(gameManager.Player.Location.row, gameManager.Player.Location.column);
         }
         public void PrintEvent(GameManager gameManager)
         {
@@ -146,5 +147,29 @@ namespace Lab4
                 Console.Write(stringRow[i]);
             }
         }                
+        public void PrintEndScreen(GameManager gameManager)
+        {
+            Console.WriteLine(
+                "**********************************************************************************\n" +
+                "**********************************************************************************\n" +
+                "**********                 Congratz, you won the game!                  **********\n" +
+                "**********                                                              **********\n" +
+                "**********                 You used {0} Moves                           **********\n" +
+                "**********                                                              **********\n" +
+                "**********************************************************************************\n" +
+                "**********************************************************************************\n" +
+                "**********                         Hightscore                           **********\n" +
+                "**********     1: Alex: XXX Moves                                       **********\n" +
+                "**********     2: John: XXX Moves                                       **********\n" +
+                "**********     3: Emil: XXX Moves                                       **********\n" +
+                "**********                                                              **********\n" +
+                "**********************************************************************************\n" +
+                "**********************************************************************************\n" +
+                "**********                                                              **********\n" +
+                "**********                press any key to close the game               **********\n" +
+                "**********                                                              **********\n" +
+                "**********************************************************************************\n" +
+                "**********************************************************************************\n", gameManager.Player.NumberOfMoves);
+        }
     }
 }
