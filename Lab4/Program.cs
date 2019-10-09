@@ -6,20 +6,12 @@ namespace Lab4
 {
     class Program
     {
-        //               TO DO Kriterier
-        // 1: det ska gå att klara spelet och se sin poäng
-        //   för VG
-        
-        // 2: fler föremål, som kan användas på dörrar, monster eller fällor; eller som ger poäng
-        // ny potion class arv av gameobject IInteract redusera spelarmoves
-        // 3: rum som man inte ser vad de innehåller förrän man går in i dem ?? fog of war?
-
-        
+        //               TO DO Kriterier        
         // adda gamestate
         // adda vettig gameloop efter gamestate
         // adda winningscreen
-        
-        // adda potions
+        // adda instructioner 
+        // ändra hur events visas
         
         static void Main(string[] args)
         {
@@ -41,7 +33,8 @@ namespace Lab4
             mapCreator.CrateMap(gameManager);
             Console.CursorVisible = false;
             mapRenderer.UpdateAllPoints(gameManager);
-            
+            mapRenderer.PrintInstructionWindow();
+
             // sätt gamestate till play
 
             while (gameManager.Map[gameManager.Player.Location.row, gameManager.Player.Location.column].Symbol != 'E')
@@ -49,7 +42,7 @@ namespace Lab4
                 mapRenderer.PrintInventory(gameManager);
                 mapRenderer.PrintNumberOfMoves(gameManager);
                 mapRenderer.PrintAroundPlayer(gameManager);
-                mapRenderer.PrintEvents(gameManager);
+                mapRenderer.PrintEvent(gameManager);
                 movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
             }  
             // sätta IInteractable på utgången som sätter gamestate till End?

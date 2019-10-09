@@ -107,7 +107,7 @@ namespace Lab4
             Console.SetCursorPosition(0, 21);
             Console.Write("Moves: " + gameManager.Player.NumberOfMoves);
         }
-        public void PrintEvents(GameManager gameManager)
+        public void PrintEvent(GameManager gameManager)
         {
             foreach (IInteractAble interactAble in gameManager.EventObject)
             {
@@ -120,5 +120,26 @@ namespace Lab4
             gameManager.EventObject.RemoveRange(0, gameManager.EventObject.Count);
             
         }
+        
+        public void PrintInstructionWindow()
+        {
+            string instructionWindow =
+                $"*******************************\n" +
+                $"*       The escape room       *\n" +
+                $"*                             *\n" +
+                $"*  Movement: w,a,s,d          *\n" +
+                $"*  Key:     K                 *\n" +
+                $"*  Trap:    T                 *\n" +
+                $"*  Potion:  P                 *\n" +
+                $"*  Door:    D                 *\n" +
+                $"*  Exit:    E                 *\n" +
+                $"*******************************";
+            var rows = instructionWindow.Split("\n");
+            for (int i = 0; i < rows.Length; i++)
+            {
+                Console.SetCursorPosition(50, i+ 20);
+                Console.Write(rows[i]);
+            }
+        }                
     }
 }
