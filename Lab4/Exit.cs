@@ -14,7 +14,7 @@ namespace Lab4
         }        
         public void Interact(GameManager gameManager, Entity entity)
         {
-            gameManager.SetGameState(GameState.EndScreen);
+            gameManager.GameState = GameState.EndScreen;
         }
         public void Event(GameManager gameManager, Entity entity) { }
         

@@ -4,6 +4,10 @@ using System.IO;
 
 namespace Lab4
 {
+    // Highscore
+    // Alex 207 moves
+    // Emil 217 moves
+    // John 221 moves
     class Program
     {      
         static void Main(string[] args)
@@ -20,7 +24,7 @@ namespace Lab4
                 {
                     case GameState.SetUp:                        
                         player.Inventory = new List<GameObject>();
-                        gameManager.GameObject = new List<GameObject>(); // skapa dessa i konstruktorn för gameManager?
+                        gameManager.GameObject = new List<GameObject>();
                         gameManager.Player = player;
                         gameManager.Map = new Construkt[100, 17];
                         gameManager.EventObject = new List<GameObject>();
@@ -28,7 +32,7 @@ namespace Lab4
                         mapCreator.CreateMap(gameManager);
                         mapRenderer.UpdateAllPoints(gameManager);
                         mapRenderer.PrintInstructionWindow();
-                        gameManager.SetGameState(GameState.Playing);
+                        gameManager.GameState = GameState.Playing;
                         break;
 
                     case GameState.Playing:
@@ -42,7 +46,7 @@ namespace Lab4
                     case GameState.EndScreen:
                         Console.Clear();
                         mapRenderer.PrintEndScreen(gameManager);
-                        gameManager.SetGameState(GameState.ExitGame);
+                        gameManager.GameState = GameState.ExitGame;
                         Console.ReadKey();
                         break;
                     

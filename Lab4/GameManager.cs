@@ -12,14 +12,10 @@ namespace Lab4
         public Construkt[,] Map { get; set; }
         public List<GameObject> GameObject { get; set; }
         public List<GameObject> EventObject { get; set; }
-        public GameState GameState { get;private set; }
+        public GameState GameState { get; set; }
         public GameManager()
         {
             GameState = GameState.SetUp;
-        }
-        public void SetGameState(GameState gameState)
-        {
-            GameState = gameState;
         }
     }
 }
