@@ -40,7 +40,7 @@ namespace Lab4
                         mapRenderer.PrintAroundPlayer(gameManager);
                         mapRenderer.PrintEvent(gameManager);
                         mapRenderer.PrintNumberOfMoves(gameManager);
-                        movement.ObjectMovment(gameManager, player, input.DirectionInput(gameManager));
+                        movement.ObjectMovement(gameManager, player, input.DirectionInput(gameManager));
                         break;
 
                     case GameState.EndScreen:

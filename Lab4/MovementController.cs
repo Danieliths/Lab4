@@ -14,7 +14,7 @@ namespace Lab4
                 gameManager.Player.NumberOfMoves += 1;
             }
         }
-        public void ObjectMovment(GameManager gameManager, GameObject objectToMove, Direction directionToMove)
+        public void ObjectMovement(GameManager gameManager, GameObject objectToMove, Direction directionToMove)
         {
             switch (directionToMove)
             {
